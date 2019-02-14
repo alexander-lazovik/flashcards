@@ -7,14 +7,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+# ruby encoding: utf-8
 require 'nokogiri'
 require 'open-uri'
+
+user = User.create!(email: "test@mail.com", password: "test", password_confirmation: "test")
+block = user.blocks.create!(title: "Beautiful Words")
 
 doc = Nokogiri::HTML(open('http://www.learnathome.ru/blog/100-beautiful-words'))
 
 doc.search('//table/tbody/tr').each do |row|
-  original = row.search('td[2]/p')[0].content.downcase
-  translated = row.search('td[1]/p')[0].content.downcase
-  Card.create(original_text: original, translated_text: translated, user_id: 17)
+  original = row.search('td')[1].content.downcase
+  translated = row.search('td')[3].content.downcase
+  block.cards.create!(original_text: original, translated_text: translated, user_id: user.id)
 end

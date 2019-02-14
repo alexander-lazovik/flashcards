@@ -15,8 +15,8 @@ class Card < ActiveRecord::Base
 
   mount_uploader :image, CardImageUploader
 
-  scope :pending, -> { where('review_date <= ?', Time.now).order('RANDOM()') }
-  scope :repeating, -> { where('quality < ?', 4).order('RANDOM()') }
+  scope :pending, -> { where('review_date <= ?', Time.now).order(Arel.sql('RANDOM()')) }
+  scope :repeating, -> { where('quality < ?', 4).order(Arel.sql('RANDOM()')) }
 
   def check_translation(user_translation)
     distance = Levenshtein.distance(full_downcase(translated_text),
