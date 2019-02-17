@@ -62,8 +62,10 @@ describe Card do
   end
 
   it 'create card errors OK' do
+    user = User.create!(email: "test1@mail.com", password: "test", password_confirmation: "test")
+    block = user.blocks.create!(title: "Beautiful Words")
     card = Card.create(original_text: 'дом', translated_text: 'house',
-                       user_id: 1, block_id: 1)
+                       user_id: user.id, block_id: block.id)
     expect(card.errors.any?).to be false
   end
 
