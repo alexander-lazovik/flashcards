@@ -55,7 +55,8 @@ gem 'rollbar'
 # New Relic RPM Ruby Agent
 gem 'newrelic_rpm'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+#gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap'
 
 group :development, :test do
   gem 'rspec-rails'
