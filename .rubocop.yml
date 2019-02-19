@@ -11,3 +11,11 @@ Style/FrozenStringLiteralComment:
 # The guiding principle of classes is SRP, SRP can't be accurately measured by LoC
 Metrics/ClassLength:
   Max: 200
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Enabled: false
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
