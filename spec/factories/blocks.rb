@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 FactoryBot.define do
   factory :block do
-    title {'Block 1'}
+    title { 'Block 1' }
     user
 
     factory :block_with_one_card do

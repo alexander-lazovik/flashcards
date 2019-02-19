@@ -14,7 +14,7 @@ class Dashboard::TrainerController < Dashboard::BaseController
     check_result = @card.check_translation(trainer_params[:user_translation])
 
     if check_result[:state]
-      if check_result[:distance] == 0
+      if check_result[:distance].zero?
         flash[:notice] = t(:correct_translation_notice)
       else
         flash[:alert] = t(:translation_from_misprint_alert,
@@ -36,12 +36,7 @@ class Dashboard::TrainerController < Dashboard::BaseController
   end
 
   def next_card
-    if current_user.current_block
-      card = current_user.current_block.cards.pending.first
-      card ||= current_user.current_block.cards.repeating.first
-    else
-      card = current_user.cards.pending.first
-      card ||= current_user.cards.repeating.first
-    end
+    cards = current_user.current_block ? current_user.current_block.cards : current_user.cards
+    cards.pending.first || cards.repeating.first
   end
 end

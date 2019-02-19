@@ -105,7 +105,8 @@ describe 'password authentication' do
       fill_in 'user[password]', with: '12345'
       fill_in 'user[password_confirmation]', with: '12345'
       click_button 'Сохранить'
-      expect(page).to have_content 'User profile updated successfully.'
+      user = User.find_by(email: 'test@test.com')
+      expect(page).to have_content I18n.t(:user_profile_updated, user: user)
     end
 
     it 'authentication TRUE' do
