@@ -25,7 +25,7 @@ gem 'rake'
 # Rails forms made easy
 gem 'simple_form'
 # Nokogiri is an HTML, XML, SAX, and Reader parser.
-gem 'nokogiri'
+gem "nokogiri"
 # Extends Rails seeds to split out complex seeds into multiple files
 gem 'seedbank'
 # Magical Authentication for Rails
