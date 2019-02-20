@@ -1,6 +1,6 @@
 require 'super_memo'
 
-class Card < ActiveRecord::Base
+class Card < ApplicationRecord
   belongs_to :user
   belongs_to :block
   validates :user_id, presence: true
@@ -15,14 +15,15 @@ class Card < ActiveRecord::Base
 
   mount_uploader :image, CardImageUploader
 
-  scope :pending, -> { where('review_date <= ?', Time.now).order('RANDOM()') }
-  scope :repeating, -> { where('quality < ?', 4).order('RANDOM()') }
+  scope :pending, -> { where('review_date <= ?', Time.now).order(Arel.sql('RANDOM()')) }
+  scope :repeating, -> { where('quality < ?', 4).order(Arel.sql('RANDOM()')) }
 
   def check_translation(user_translation)
     distance = Levenshtein.distance(full_downcase(translated_text),
                                     full_downcase(user_translation))
 
-    sm_hash = SuperMemo.algorithm(interval, repeat, efactor, attempt, distance, 1)
+    sm_hash = SuperMemo.algorithm(interval: interval, repeat: repeat,
+      efactor: efactor, attempt: attempt, distance: distance, distance_limit: 1)
 
     if distance <= 1
       sm_hash.merge!({ review_date: Time.now + interval.to_i.days, attempt: 1 })

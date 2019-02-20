@@ -1,2 +1,2 @@
-$("#notice_block").html('<%= escape_javascript render('shared/alert_notice') %>');
+$("#notice_block").html('<%= escape_javascript render('shared/flash_messages') %>');
 $("#trainer_content").html('<%= escape_javascript render('review_form', card: @card) %>');

@@ -4,45 +4,37 @@
 
 class SuperMemo
   class << self
-    def algorithm(interval, repeat, efactor, attempt, distance, distance_limit)
+    def algorithm(interval:, repeat:, efactor:, attempt:, distance:, distance_limit: 1)
       quality = set_quality(attempt, distance, distance_limit)
       efactor = set_efactor(efactor, quality)
-      sm_hash = if quality >= 3
-                  set_interval(interval, repeat + 1, efactor)
-                else
-                  set_interval(interval, 1, efactor)
-                end
+      repeat = quality >= 3 ? repeat + 1 : 1
+      sm_hash = set_interval(interval, repeat, efactor)
       sm_hash.merge!(quality: quality)
     end
 
+    private
+
     def set_interval(interval, repeat, efactor)
-      interval = case repeat
-                 when 1 then 1
-                 when 2 then 6
-                 else (interval * efactor).round
-                 end
+      intervals = { 1 => 1, 2 => 6 }
+      intervals.default = (interval * efactor).round
+      interval = intervals[repeat]
       { interval: interval, efactor: efactor, repeat: repeat }
     end
 
     def set_efactor(efactor, quality)
-      efactor = efactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
+      efactor += (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
       efactor < 1.3 ? 1.3 : efactor
     end
 
     def set_quality(attempt, distance, distance_limit)
       if distance <= distance_limit
-        case attempt
-        when 1 then 5
-        when 2 then 4
-        else 3
-        end
+        qualities = { 1 => 5, 2 => 4 }
+        qualities.default = 3
       else
-        case attempt
-        when 1 then 2
-        when 2 then 1
-        else 0
-        end
+        qualities = { 1 => 2, 2 => 1 }
+        qualities.default = 0
       end
+      qualities[attempt]
     end
   end
 end
