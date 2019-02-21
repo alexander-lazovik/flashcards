@@ -23,3 +23,7 @@ public/uploads/
 Capfile
 config/deploy.rb
 config/deploy/
+config/secrets.yml
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
