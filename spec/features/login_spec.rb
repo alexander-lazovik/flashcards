@@ -52,23 +52,23 @@ describe 'password authentication' do
     end
 
     it 'authentication TRUE' do
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
       user = User.find_by(email: 'test@test.com')
       expect(page).to have_content I18n.t(:log_in_is_successful_notice, locale: user.locale)
     end
 
     it 'incorrect e-mail' do
-      login('1@1.com', '12345', 'Войти')
+      login_by_email('1@1.com', '12345', 'Войти')
       expect(page).to have_content I18n.t(:not_logged_in_alert, locale: I18n.locale)
     end
 
     it 'incorrect password' do
-      login('test@test.com', '56789', 'Войти')
+      login_by_email('test@test.com', '56789', 'Войти')
       expect(page).to have_content I18n.t(:not_logged_in_alert, locale: I18n.locale)
     end
 
     it 'incorrect e-mail and password' do
-      login('1@1.com', '56789', 'Войти')
+      login_by_email('1@1.com', '56789', 'Войти')
       expect(page).to have_content I18n.t(:not_logged_in_alert, locale: I18n.locale)
     end
   end
@@ -109,7 +109,7 @@ describe 'password authentication' do
     it 'authentication TRUE' do
       create(:user)
       click_link 'en'
-      login('test@test.com', '12345', 'Log in')
+      login_by_email('test@test.com', '12345', 'Log in')
       user = User.find_by(email: 'test@test.com')
       expect(page).to have_content I18n.t(:log_in_is_successful_notice, locale: user.locale)
     end

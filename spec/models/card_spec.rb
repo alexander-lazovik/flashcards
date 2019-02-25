@@ -73,8 +73,7 @@ describe Card do
   it 'set_review_date OK' do
     card = Card.create(original_text: 'дом', translated_text: 'house',
                        user_id: user.id, block_id: block.id)
-    expect(card.review_date.strftime('%Y-%m-%d %H:%M')).
-        to eq(Time.zone.now.strftime('%Y-%m-%d %H:%M'))
+    expect(card.review_date.strftime('%Y-%m-%d %H:%M')).to eq(Time.zone.now.strftime('%Y-%m-%d %H:%M'))
   end
 
   it 'check_translation Eng OK' do

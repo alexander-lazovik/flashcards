@@ -6,7 +6,7 @@ class Dashboard::ProfileController < Dashboard::BaseController
     if current_user.update(user_params)
       redirect_to edit_profile_path, notice: t(:user_profile_updated)
     else
-      respond_with current_user
+      respond_to current_user
     end
   end
 

@@ -6,6 +6,12 @@ FactoryBot.define do
     locale { 'ru' }
     current_block_id { '' }
 
+    factory :user_admin do
+      after(:create) do |user|
+        user.add_role(:admin)
+      end
+    end
+
     factory :user_with_one_block_without_cards do
       after(:create) do |user|
         create(:block, user: user)
@@ -50,6 +56,18 @@ FactoryBot.define do
         create(:block_with_two_cards, user: user)
         create(:block_with_two_cards, user: user)
       end
+    end
+  end
+
+  factory :admin, class: User do
+    email { 'admin@test.com' }
+    password { '12345' }
+    password_confirmation { '12345' }
+    locale { 'en' }
+    current_block_id { '' }
+
+    after(:create) do |user|
+      user.add_role(:admin)
     end
   end
 end

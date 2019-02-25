@@ -19,4 +19,11 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
+
+  # Active Admin calls this method to ensure that there is a currently logged in admin user
+  def authenticate_admin_user!
+    unless current_user && current_user.admin?
+      redirect_to login_path, alert: t(:please_log_in_as_admin)
+    end
+  end
 end

@@ -1,7 +1,9 @@
 class User < ApplicationRecord
+  rolify
   has_many :cards, dependent: :destroy
   has_many :blocks, dependent: :destroy
   has_many :authentications, dependent: :destroy
+
   belongs_to :current_block, class_name: 'Block', optional: true
   before_create :set_default_locale
   before_validation :set_default_locale, on: :create
@@ -31,6 +33,10 @@ class User < ApplicationRecord
 
   def reset_current_block
     update_attribute(:current_block_id, nil)
+  end
+
+  def admin?
+    has_role? :admin
   end
 
   private

@@ -20,8 +20,9 @@ en:
   user_profile_label: 'User profile'
   delete_user_label: 'Delete user'
   log_out_label: 'Log out'
+  admin_label: 'Admin'
+  admin_dashboard_content: 'Dashboard'
   user_created_successfully_notice: 'User created successfully.'
-  please_log_in_alert: 'Please log in.'
   not_found_alert: 'You have turned to a non-existent record.'
   log_in_is_successful_notice: 'Login is successful.'
   not_logged_in_alert: 'Not logged in. Check the input E-mail and Password.'
@@ -36,8 +37,10 @@ en:
   log_out_is_successful_notice: 'Log out is successful.'
   log_out_failed_provider_alert: "Log out of your account %{provider} failed."
   please_log_in: 'Please log in.'
+  please_log_in_as_admin: 'Please log in as administrator.'
   user_profile_updated: "User profile updated successfully."
   user_deleted_notice: "User user_deleted_notice successfully."
+
 
   activerecord:
       errors:
