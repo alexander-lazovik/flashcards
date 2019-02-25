@@ -6,15 +6,6 @@ module LoginHelper
     click_button(action)
   end
 
-  def login_admin
-    @user = create(:admin)
-    visit root_path
-    click_link(I18n.t(:log_in_label))
-    fill_in('email', with: @user.email)
-    fill_in('password', with: '12345')
-    click_button(I18n.t(:log_in_label))
-  end
-
   def login_user(user = nil)
     user = create(:user) unless user
     visit root_path
@@ -22,7 +13,7 @@ module LoginHelper
     fill_in('email', with: user.email)
     fill_in('password', with: '12345')
     click_button(I18n.t(:log_in_label))
-    @user = user
+    user
   end
 
   def register(email, password, password_confirmation, action)

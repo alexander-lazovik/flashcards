@@ -40,7 +40,7 @@ en:
   please_log_in_as_admin: 'Please log in as administrator.'
   user_profile_updated: "User profile updated successfully."
   user_deleted_notice: "User user_deleted_notice successfully."
-
+  user_not_authorized_alert: 'You are not authorized to perform this action.'
 
   activerecord:
       errors:

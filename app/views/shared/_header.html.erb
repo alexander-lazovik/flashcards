@@ -20,7 +20,7 @@
           <% end %>
           <p class="navbar-text navbar-right">
             <% if current_user %>
-              <% if current_user.admin? %>
+              <% if policy(:admin).show_link? %>
                 <%= link_to t(:admin_label), admin_root_path(), class: 'navbar-link' %> |
               <% end %>
               <%= link_to t(:user_profile_label), edit_profile_path(current_user),
