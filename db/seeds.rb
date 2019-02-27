@@ -11,6 +11,8 @@
 require 'nokogiri'
 require 'open-uri'
 
+admin = User.create!(email: "admin@mail.com", password: "test", password_confirmation: "test")
+admin.add_role(:admin)
 user = User.create!(email: "test@mail.com", password: "test", password_confirmation: "test")
 block = user.blocks.create!(title: "Beautiful Words")
 

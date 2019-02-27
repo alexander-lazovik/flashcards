@@ -57,6 +57,12 @@ gem 'newrelic_rpm'
 # Reduces boot times through caching; required in config/boot.rb
 #gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
+# Active Admin is a Ruby on Rails framework for creating elegant backends for website administration.
+gem 'activeadmin'
+# Role management library with resource scoping
+gem "rolify"
+# Minimal authorization through OO design and pure Ruby classes
+gem 'pundit'
 
 # deployment gems
 group :development do

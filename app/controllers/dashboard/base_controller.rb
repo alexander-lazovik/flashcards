@@ -9,7 +9,6 @@ class Dashboard::BaseController < ApplicationController
   end
 
   def not_found
-    flash[:alert] = t(:not_found_alert)
-    redirect_to root_path
+    redirect_to root_path, alert: t(:not_found_alert)
   end
 end

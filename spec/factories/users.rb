@@ -6,6 +6,12 @@ FactoryBot.define do
     locale { 'ru' }
     current_block_id { '' }
 
+    trait :admin do
+      after(:create) do |user|
+        user.add_role(:admin)
+      end
+    end
+
     factory :user_with_one_block_without_cards do
       after(:create) do |user|
         create(:block, user: user)

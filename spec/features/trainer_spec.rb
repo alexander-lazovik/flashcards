@@ -7,7 +7,7 @@ describe 'review cards without blocks' do
     before do
       create(:user)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'no cards' do
@@ -21,7 +21,7 @@ describe 'review cards with one block' do
     before do
       create(:user_with_one_block_without_cards)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'no cards' do
@@ -33,9 +33,9 @@ describe 'review cards with one block' do
     before do
       user = create(:user_with_one_block_and_two_cards)
       user.cards.each { |card| card.update_attribute(:review_date,
-                                                     Time.now - 3.days) }
+                                                     Time.zone.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'first visit' do
@@ -73,9 +73,9 @@ describe 'review cards with one block' do
     before do
       user = create(:user_with_one_block_and_one_card)
       user.cards.each { |card| card.update_attribute(:review_date,
-                                                     Time.now - 3.days) }
+                                                     Time.zone.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'incorrect translation' do
@@ -133,7 +133,7 @@ describe 'review cards with two blocks' do
     before do
       create(:user_with_two_blocks_without_cards)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'no cards' do
@@ -145,9 +145,9 @@ describe 'review cards with two blocks' do
     before do
       user = create(:user_with_two_blocks_and_one_card_in_each)
       user.cards.each { |card| card.update_attribute(:review_date,
-                                                     Time.now - 3.days) }
+                                                     Time.zone.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'first visit' do
@@ -185,9 +185,9 @@ describe 'review cards with two blocks' do
     before do
       user = create(:user_with_two_blocks_and_only_one_card)
       user.cards.each { |card| card.update_attribute(:review_date,
-                                                     Time.now - 3.days) }
+                                                     Time.zone.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'incorrect translation' do
@@ -223,7 +223,7 @@ describe 'review cards with current_block' do
     before do
       create(:user_with_two_blocks_without_cards, current_block_id: 1)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'no cards' do
@@ -237,9 +237,9 @@ describe 'review cards with current_block' do
       block = user.blocks.first
       user.set_current_block(block)
       card = user.cards.find_by(block_id: block.id)
-      card.update_attribute(:review_date, Time.now - 3.days)
+      card.update_attribute(:review_date, Time.zone.now - 3.days)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'first visit' do
@@ -279,9 +279,9 @@ describe 'review cards with current_block' do
       block = user.blocks.first
       user.set_current_block(block)
       card = user.cards.find_by(block_id: block.id)
-      card.update_attribute(:review_date, Time.now - 3.days)
+      card.update_attribute(:review_date, Time.zone.now - 3.days)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_by_email('test@test.com', '12345', 'Войти')
     end
 
     it 'incorrect translation' do
