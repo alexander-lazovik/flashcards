@@ -5,7 +5,7 @@ describe 'Administrator tests:' do
   include LoginHelper
 
   describe 'admin user' do
-    let!(:user) { create(:admin) }
+    let!(:user) { create(:user, :admin) }
 
     before do
       login_user(user)
