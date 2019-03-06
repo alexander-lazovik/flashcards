@@ -1,6 +1,7 @@
 require 'super_memo'
 
 class Card < ApplicationRecord
+  attr_accessor :remote_image_url
   belongs_to :user
   belongs_to :block
   validates :user_id, presence: true

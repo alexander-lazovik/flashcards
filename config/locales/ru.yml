@@ -2,6 +2,10 @@ ru:
   welcome: 'Добро пожаловать.'
   original_text_label: 'Оригинал'
   translated_text_label: 'Перевод'
+  review_label: 'Пересмотр'
+  edit_label: 'Редактировать'
+  delete_label: 'Удалить'
+  delete_confirm: 'Удалить запись?'
   current_card_label: 'Текущая карточка'
   check_card_button: 'Проверить'
   no_review_card_text: 'Вы изучили все доступные карточки.
@@ -41,8 +45,20 @@ ru:
   user_profile_updated: "Профиль пользователя успешно обновлен."
   user_deleted_notice: "Пользователь успешно удален."
   user_not_authorized_alert: 'Вы не авторизованы для выполнения этого действия.'
+  load_image_label: 'Загрузить картинку из Flickr'
+  new_card_label: 'Добавить карточку'
+  edit_card_label: 'Редактировать карточку'
+  search_label: 'Найти'
+  searching_label: 'Поиск...'
+  close_label: 'Закрыть'
+  image_tags_placeholder: 'Введите тэги'
+  card_created_notice: 'Карточка успешно создана.'
+  card_updated_notice: 'Карточка успешно обновлена.'
+  card_deleted_notice: 'Карточка успешно удалена.'
 
   activerecord:
+    models:
+      card: 'Карточка'
     errors:
       messages:
         blank: 'Заполните поле.'
@@ -54,7 +70,13 @@ ru:
         restrict_dependent_destroy:
           has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
           has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
-
+  helpers:
+    submit:
+      create: 'Добавить'
+      update: 'Сохранить'
+      card:
+        create: 'Добавить'
+        update: 'Сохранить'
   date:
     abbr_day_names:
     - Вс

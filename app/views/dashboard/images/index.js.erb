@@ -1,0 +1,10 @@
+// Display a list of images
+modal = $('#load_image');
+list = $('#images', modal);
+list.empty();
+<% @images.each_with_index do |image, i| %>
+  link = $('<%= link_to "Link", select_image_path(url: image.url), remote: true, id: "image_#{i.to_s}" %>');
+  link.html('<img class="flickr_photo" \
+    title="<%= image.title %>" src="<%= image.url %>" width="110" height="110">');
+  list.append(link);
+<% end %>

@@ -1,29 +1,30 @@
-en:
+ru:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": 'Да'
+    "no": 'Нет'
     required:
-      text: 'required'
+      text: 'обязательно'
       mark: '*'
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: "Пожалуйста посмотрите на проблемы ниже:"
     labels:
       card:
-        original_text: 'Original text'
-        translated_text: 'Tanslated text'
-        block_id: 'Deck'
-        image: 'Image'
-        remove_image: 'Remove Image'
+        original_text: 'Оригинал'
+        translated_text: 'Перевод'
+        block_id: 'Колода'
+        image: 'Изображение'
+        remove_image: 'Удалить изображение'
     placeholders:
       card:
-        block_id: 'Choose a deck'
+        block_id: 'Выберите колоду'
   helpers:
     submit:
-      create: "Create"
-      update: "Save Changes"
+      create: 'Добавить'
+      update: 'Сохранить'
+
 
  # en:
  #   simple_form:

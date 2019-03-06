@@ -1,0 +1,17 @@
+// Close modal window
+$('#load_image').modal("hide");
+
+// delete old image
+$('#card_image_url').remove();
+
+// Insert new image
+$('#p_thumbnail').append('<img id="card_image_url" src="<%= @url %>">');
+
+// Show new image
+$('#form_image').removeClass('hidden');
+
+// reset local file
+$("#card_image").val('');
+
+// set remote url
+$("#card_remote_image_url").val("<%= @url %>");

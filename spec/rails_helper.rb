@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'support/factory_bot'
+require 'selenium-webdriver'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -26,6 +27,9 @@ require 'support/factory_bot'
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+Capybara.server = :puma
+# Capybara.default_driver = :selenium_headless
+Capybara.javascript_driver = :selenium_chrome_headless
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
