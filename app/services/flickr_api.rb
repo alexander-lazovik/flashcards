@@ -1,6 +1,4 @@
 # Class incapsultes interacting with Flickr API
-require 'flickraw'
-
 class FlickrApi
   def initialize(args = {})
     FlickRaw.api_key       = Rails.application.credentials.flickr[:key]
