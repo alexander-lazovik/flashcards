@@ -1,0 +1,27 @@
+<%= form_tag(images_path, { method: :get, class: "form-inline" }) do %>
+  <div class="form-group">
+    <%= text_field_tag :tags, params[:tags],
+      class: "form-control", id: "image_tags", placeholder: "Please type in tags" %>
+  </div>
+  <%= submit_tag 'Search', name: nil, class: "btn btn-default", data: { disable_with: 'Searching...'} %>
+<% end %>
+
+<table class="table table-hover table-condensed">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Image</th>
+    <th>Link</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @images.each do |image| %>
+    <tr class="table table-hover table-condensed">
+      <td><%= image.title %></td>
+      <td>
+        <%= image_tag(image.url, :class => 'flickr_photo', :title => image.title, :size => '75x75') %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

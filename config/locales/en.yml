@@ -2,6 +2,10 @@ en:
   welcome: 'Welcome.'
   original_text_label: 'Original'
   translated_text_label: 'Translation'
+  review_label: 'Review'
+  edit_label: 'Edit'
+  delete_label: 'Delete'
+  delete_confirm: 'Delete record?'
   current_card_label: 'Current card'
   check_card_button: 'Check'
   no_review_card_text: 'You have studied all available cards.
@@ -41,11 +45,28 @@ en:
   user_profile_updated: "User profile updated successfully."
   user_deleted_notice: "User user_deleted_notice successfully."
   user_not_authorized_alert: 'You are not authorized to perform this action.'
+  load_image_label: 'Load image from Flickr'
+  new_card_label: 'Add Card'
+  edit_card_label: 'Edit Card'
+  search_label: 'Search'
+  searching_label: 'Searching...'
+  close_label: 'Close'
+  image_tags_placeholder: 'Please, type in tags'
+  card_created_notice: 'Card created successfully.'
+  card_updated_notice: 'Card updated successfully.'
+  card_deleted_notice: 'Card deleted successfully.'
 
   activerecord:
-      errors:
-        messages:
-          blank: 'Fill out the field.'
-          too_short: 'Short value.'
-          confirmation: 'Values do not match.'
-          taken: 'Not a unique value.'
+    errors:
+      messages:
+        blank: 'Fill out the field.'
+        too_short: 'Short value.'
+        confirmation: 'Values do not match.'
+        taken: 'Not a unique value.'
+  helpers:
+    submit:
+      create: "Create"
+      update: "Save Changes"
+      card:
+        create: "Create"
+        update: "Save Changes"

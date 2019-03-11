@@ -55,14 +55,20 @@ gem 'rollbar'
 # New Relic RPM Ruby Agent
 gem 'newrelic_rpm'
 # Reduces boot times through caching; required in config/boot.rb
-#gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap'
+# gem 'bootsnap', '>= 1.1.0', require: false
+# bootstrap 4 gem
+# gem 'bootstrap', '~> 4.3.1'
+# bootstrap 3 gem
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
 # Active Admin is a Ruby on Rails framework for creating elegant backends for website administration.
 gem 'activeadmin'
 # Role management library with resource scoping
 gem "rolify"
 # Minimal authorization through OO design and pure Ruby classes
 gem 'pundit'
+# Ruby library to access flickr api.
+gem 'flickraw'
 
 # deployment gems
 group :development do
@@ -75,7 +81,9 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'factory_bot_rails'
+  gem 'rspec-mocks'
   gem 'pry-rails'
   gem 'pry-byebug'
 end
